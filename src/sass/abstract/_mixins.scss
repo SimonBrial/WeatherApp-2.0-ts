@@ -1,0 +1,27 @@
+@mixin breakpoint($brt) {
+    @if ($brt == ssm) {
+        @media screen and (max-width: 320px) {
+            @content;
+        }
+    } @else if ($brt == sm) {
+        @media screen and (max-width: 480px) {
+            @content;
+        }
+    } @else if ($brt == md) {
+        @media screen and (max-width: 768px) {
+            @content;
+        }
+    } @else if ($brt == lg) {
+        @media screen and (max-width: 1024px) {
+            @content;
+        }
+    } @else if ($brt == xl) {
+        @media screen and (max-width: 1200px) {
+            @content;
+        }
+    } @else if ($brt == 2xl) {
+        @media screen and (min-width: 1201px) {
+            @content;
+        }
+    }
+}

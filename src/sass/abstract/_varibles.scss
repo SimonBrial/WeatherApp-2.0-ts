@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;500;600;700&display=swap');
+
+:root{
+    // Fonts
+    --principal-font: 'Raleway', sans-serif;
+    // Font Size
+    --font-ssm: 12px;
+    --font-sm: 16px;
+    --font-md: 24px;
+    --font-lg: 32px;
+    --font-xl: 36px;
+    --font-2xl: 42px;
+    --font-3xl: 48px;
+    --font-4xl: 54px;
+    --font-5xl: 62px;
+    --font-6xl: 72px;
+    // Font Weight
+    --weight-100: 100;
+    --weight-200: 200;
+    --weight-500: 500;
+    --weight-600: 600;
+    --weight-700: 700;
+    // border Radius
+    --border-radius: 5px;
+    // Background
+    --bg-principal: #100E1D;
+    --bg-secondary: #2c3052;
+    // Buttons
+    --btn-available: #E7E7EB;
+    --btn-disabled: #585676;
+    --btn-search-front: #6E707A;
+    --btn-search: #3C47E9;
+    // Text colors
+    --text-available: #E7E7EB;
+    --text-disabled: #110E3C;
+    --sub-text: #A09FB1;
+    --sub-text-h3: #88869D;
+    // Segun se vaya avanzando en el proyecto, se ira viendo si se adapta un switch para el modo oscuro
+}

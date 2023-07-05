@@ -1,0 +1,80 @@
+.container-button {
+    position: relative;
+    z-index: 10;
+    cursor: default;
+
+    .front-btn {
+        width: 10rem;
+        height: 2.5rem;
+        border: 2px solid black;
+        background-color: var(--btn-search-front);
+        border-radius: var(--border-radius);
+        cursor: pointer;
+
+        &:active {
+            transform: translate(3px, 3px);
+            transition: all 0.3s ease-in-out;
+        }
+
+        p {
+            color: var(--btn-available);
+            font-weight: var(--weight-500);
+            font-size: var(--font-sm);
+        }
+    }
+
+    .back-btn {
+        padding: 0.5rem 1.2rem;
+        width: 10rem;
+        height: 2.5rem;
+        border: 2px solid black;
+        background-color: white;
+        position: absolute;
+        z-index: -1;
+        top: 3px;
+        left: 3px;
+        border-radius: var(--border-radius);
+    }
+}
+
+.container-button-temp-location {
+    position: relative;
+    z-index: 10;
+    cursor: default;
+
+    .front-btn {
+        width: 2.5rem;
+        height: 2.5rem;
+        border: 2px solid black;
+        border-radius: 50%;
+        background-color: var(--btn-search-front);
+        cursor: pointer;
+        padding-top: 0.2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:active {
+            transform: translate(2.5px, 3px);
+            transition: all 0.3s ease-in-out;
+        }
+
+        span {
+            color: white;
+            font-size: 1.2rem;
+        }
+    }
+
+    .back-btn {
+        padding: 0.5rem 1.2rem;
+        border-radius: 50%;
+        width: 2.5rem;
+        height: 2.5rem;
+        border: 2px solid black;
+        background-color: white;
+        position: absolute;
+        z-index: -1;
+        top: 3px;
+        left: 1.5px;
+    }
+}

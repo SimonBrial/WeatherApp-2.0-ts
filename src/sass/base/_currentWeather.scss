@@ -1,0 +1,96 @@
+@import "../abstract/mixins";
+
+.container-current-weather {
+    width: 32vw;
+    height: 100vh;
+    color: var(--text-available);
+    padding: 0.5rem;
+    text-align: center;
+    background-color: var(--bg-secondary);
+
+    @include breakpoint(sm) {
+        width: 100%;
+    }
+}
+
+.aside-buttons {
+    padding: 2rem 0.5rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.weather-info {
+    padding: 2rem 0.5rem;
+    height: 85%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.container-img {
+    position: relative;
+    padding-top: 1rem;
+
+    .front-img {
+        position: absolute;
+        top: 20%;
+        left: 20%;
+        img {
+            width: 70%;
+        }
+    }
+
+    .back-img {
+        width: 100%;
+
+        img {
+            width: 100%;
+            opacity: 0.15;
+        }
+    }
+}
+
+.container-temp {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+    span {
+        color: var(--sub-text);
+    }
+}
+
+.container-weather {
+    h1 {
+        color: var(--sub-text);
+        font-size: 2rem;
+    }
+}
+
+.container-details {
+    color: var(--sub-text-h3);
+    font-size: 15px;
+}
+
+.date {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    span {
+        margin: 0 1rem;
+    }
+}
+
+.location {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5rem;
+
+    span {
+        font-size: 1.3rem;
+        margin: 0 0.5rem;
+    }
+}

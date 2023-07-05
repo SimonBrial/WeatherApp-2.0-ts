@@ -1,0 +1,9 @@
+@import "../abstract/mixins";
+
+.container-app {
+    display: flex;
+    flex-direction: row;
+    @include breakpoint(sm){
+        flex-direction: column;
+    }
+}
