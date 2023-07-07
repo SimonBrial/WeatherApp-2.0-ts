@@ -1,11 +1,7 @@
 import React from "react";
-import { TbTemperatureFahrenheit, TbTemperatureCelsius } from "react-icons/tb";
-
-interface StyleTemp {
-    tempSize: string;
-    unitSize: string;
-    tempColor?: string;
-}
+import { TbTemperatureCelsius } from "react-icons/tb";
+//TbTemperatureFahrenheit,
+import { StyleTemp } from "../../interface/interface";
 
 const Temp: React.FC<StyleTemp> = ({
     tempSize,
