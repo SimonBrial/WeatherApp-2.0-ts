@@ -1,4 +1,4 @@
-import { GeolocationError } from "../interface/interface";
+import { CurrentLocationData, GeolocationError } from "../interface/interface";
 
 const options = {
     enableHighAccuracy: true,
@@ -10,7 +10,7 @@ function error(error: GeolocationError): void {
     return console.log("There is an Error with your current location", error);
 }
 
-function getCurrentLocation() {
+function currentLocation(): Promise<CurrentLocationData | GeolocationPosition> {
     return new Promise((resolve, reject) => {
         if (!navigator.geolocation) {
             return reject(
@@ -30,4 +30,4 @@ function getCurrentLocation() {
     });
 }
 
-export { getCurrentLocation };
+export { currentLocation };

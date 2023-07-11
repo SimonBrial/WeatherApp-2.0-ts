@@ -1,7 +1,12 @@
 import React from "react";
 import { MdLocationPin } from "react-icons/md";
 
-const Details: React.FC = (): JSX.Element => {
+interface DetailsValue {
+    cityCurrent: string;
+}
+
+const Details: React.FC<DetailsValue> = ({cityCurrent}): JSX.Element => {
+    //console.log(cityCurrent)
     return (
         <div className="container-details">
             <div className="date">
@@ -13,7 +18,7 @@ const Details: React.FC = (): JSX.Element => {
                 <span>
                     <MdLocationPin />
                 </span>
-                <p>Tocuyork</p>
+                <p>{(cityCurrent !== "") ? cityCurrent : "CURRENT LOCATION"}</p>
             </div>
         </div>
     );

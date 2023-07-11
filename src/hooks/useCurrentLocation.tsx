@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
-import { getCurrentLocation } from "../utils/getCurrentLocation";
-import { CurrentLocationData, DataResponseWeather  } from "../interface/interface";
+import { currentLocation } from "../utils/currentLocation";
+import errorHandle from "../utils/errorHandle";
+import {
+    CurrentLocationData,
+    DataResponseWeather,
+} from "../interface/interface";
 
-const useCurrentLocation = (): DataResponseWeather | unknown => {
-    const [data, setData] = useState<CurrentLocationData | unknown>({
+const useCurrentLocation = (): DataResponseWeather => {
+    const [data, setData] = useState<CurrentLocationData>({
         coords: {
             accuracy: 0,
             altitude: null,
@@ -15,31 +19,34 @@ const useCurrentLocation = (): DataResponseWeather | unknown => {
         },
         timestamp: 0,
     });
-
-    const errorMsg = "Geolocation is not supported by your browser";
-
     useEffect(() => {
-        getCurrentLocation()
-            .then((location) => setData(location))
-            .catch((err) =>
-                console.log(
-                    "Hay un error y no se puede mostrar la informacion de la posicion actual",
-                    err,
-                ),
-            );
+        currentLocation()
+            .then((location) => setData(location as CurrentLocationData))
+            .catch((err) => console.log(errorHandle("current_position"), err));
     }, []);
-
     if (!data) {
         return {
             data: null,
-            errorMsg: errorMsg
+            errorMsg: errorHandle("Geolocation_error"),
+            statusPermission: false,
         };
     } else {
-        return {
-            data: data,
-            errorMsg: null
-        };
+        const { latitude, longitude } = data.coords;
+        if (latitude == 0 && longitude == 0) {
+            const errorCode: string = errorHandle("espera_permisos");
+            return {
+                data: { latitude: latitude, longitude: longitude },
+                errorMsg: errorCode,
+                statusPermission: false,
+            };
+        } else {
+            const errorCode: string = errorHandle("code_200");
+            return {
+                data: { latitude: latitude, longitude: longitude },
+                errorMsg: errorCode,
+                statusPermission: true,
+            };
+        }
     }
 };
-
 export default useCurrentLocation;

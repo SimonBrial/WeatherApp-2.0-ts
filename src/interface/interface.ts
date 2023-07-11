@@ -1,170 +1,16 @@
 import { ReactNode } from "react";
-// ----------------------------------
-interface CurrentWeather {
-    queryCost: number;
-    latitude: number;
-    longitude: number;
-    resolvedAddress: string;
-    address: string;
-    timezone: string;
-    tzoffset: number;
-    description: string;
-    days: Day[];
-    alerts: unknown[];
-    stations: Stations;
-    currentConditions: CurrentConditions;
-}
-
-interface Day {
-    datetime: string;
-    datetimeEpoch: number;
-    tempmax: number;
-    tempmin: number;
-    temp: number;
-    feelslikemax: number;
-    feelslikemin: number;
-    feelslike: number;
-    dew: number;
-    humidity: number;
-    precip: number;
-    precipprob: number;
-    precipcover: number;
-    preciptype: string[] | undefined;
-    snow: number;
-    snowdepth: number;
-    windgust: number;
-    windspeed: number;
-    winddir: number;
-    pressure: number;
-    cloudcover: number;
-    visibility: number;
-    solarradiation: number;
-    solarenergy: number;
-    uvindex: number;
-    severerisk: number;
-    sunrise: string;
-    sunriseEpoch: number;
-    sunset: string;
-    sunsetEpoch: number;
-    moonphase: number;
-    conditions: string;
-    description: string;
-    icon: string;
-    stations?: string[] | null;
-    source: string;
-    hours: Hour[];
-}
-
-interface Hour {
-    datetime: string;
-    datetimeEpoch: number;
-    temp: number;
-    feelslike: number;
-    humidity: number;
-    dew: number;
-    precip: number;
-    precipprob: number;
-    snow: number;
-    snowdepth: number;
-    preciptype?: string[] | null;
-    windgust: number;
-    windspeed: number;
-    winddir: number;
-    pressure: number;
-    visibility: number;
-    cloudcover: number;
-    solarradiation: number;
-    solarenergy: number;
-    uvindex: number;
-    severerisk: number;
-    conditions: string;
-    icon: string;
-    stations?: string[] | null;
-    source: string;
-}
-
-interface Stations {
-    SVVA: Svva;
-    SVJM: Svjm;
-    SVBS: Svbs;
-}
-
-interface Svva {
-    distance: number;
-    latitude: number;
-    longitude: number;
-    useCount: number;
-    id: string;
-    name: string;
-    quality: number;
-    contribution: number;
-}
-
-interface Svjm {
-    distance: number;
-    latitude: number;
-    longitude: number;
-    useCount: number;
-    id: string;
-    name: string;
-    quality: number;
-    contribution: number;
-}
-
-interface Svbs {
-    distance: number;
-    latitude: number;
-    longitude: number;
-    useCount: number;
-    id: string;
-    name: string;
-    quality: number;
-    contribution: number;
-}
-
-interface CurrentConditions {
-    datetime: string;
-    datetimeEpoch: number;
-    temp: number;
-    feelslike: number;
-    humidity: number;
-    dew: number;
-    precip: number;
-    precipprob: number;
-    snow: number;
-    snowdepth: number;
-    preciptype: unknown;
-    windgust: unknown;
-    windspeed: number;
-    winddir: number;
-    pressure: number;
-    visibility: number;
-    cloudcover: number;
-    solarradiation: number;
-    solarenergy: number;
-    uvindex: number;
-    conditions: string;
-    icon: string;
-    stations: string[];
-    source: string;
-    sunrise: string;
-    sunriseEpoch: number;
-    sunset: string;
-    sunsetEpoch: number;
-    moonphase: number;
-}
-
-// ----------------------------------
+import {
+    CurrentConditions,
+} from "./DataWeather.interface";
+import { DataPosition } from "./dataPosition.interface";
+import { CurrentWeatherResponse, ForecastData } from "./DataResponse.interface";
 
 interface InitialState {
-    geolocation: CurrentLocationData;
-    currentWeather: CurrentConditions;
-    forecast: Day[];
-    hightlight: CurrentConditions;
-    celcius: boolean;
-    fahrenheit: boolean;
-    dataCurrentLocation: CurrentConditions;
-    dataSpecifyLocation: CurrentConditions;
+    currentWeather?: CurrentWeatherResponse;
+    hightlight?: CurrentConditions;
+    fahrenheit?: boolean;
+    celcius?: boolean;
+    forecast?: ForecastData;
 }
 
 interface currentWeather {
@@ -208,22 +54,49 @@ interface StyleTemp {
     tempSize: string;
     unitSize: string;
     tempColor?: string;
+    tempValue: number;
+    tempUnit: boolean;
+}
+
+interface ResponseData {
+    data: currentWeather | DataPosition;
+    errorMsg: string;
+    statusPermission: boolean;
 }
 
 interface ContextProps {
-    geolocation: CurrentLocationData;
-    currentWeather: CurrentConditions;
-    forecast: Day[];
-    hightlight: CurrentConditions;
-    celcius: boolean;
-    fahrenheit: boolean;
-    dataCurrentLocation: CurrentConditions;
-    dataSpecifyLocation: CurrentConditions;
+    currentWeather?: CurrentWeatherResponse;
+    hightlight?: CurrentConditions;
+    fahrenheit?: boolean;
+    celcius?: boolean;
+    forecast?: ForecastData;
+
+    getDataByLatLng : (
+        latitude: number,
+        longitude: number,
+    ) => Promise<void>;
+    getDataByCityName?: (city: string) => void;
 }
 
-interface DataResponseWeather extends CurrentLocationData {
-    data: CurrentLocationData;
+interface Prueba {
+    data: currentWeather;
     errorMsg: string;
+    statusPermission: boolean;
+}
+interface Response {
+    type: string;
+    payload: Prueba;
+}
+
+interface DataLatAndLong {
+    latitude: number;
+    longitude: number;
+}
+
+interface DataResponseWeather {
+    data: DataLatAndLong | null;
+    errorMsg: string;
+    statusPermission: boolean;
 }
 
 export type {
@@ -234,5 +107,17 @@ export type {
     currentWeather,
     InitialState,
     ContextProps,
+    ResponseData,
     StyleTemp,
+    Response,
 };
+
+// https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/London,UK?key=SEAPUVXW54DNQAZD2EM98B486
+
+//https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/10.1242%2C-68.0709?unitGroup=metric&key=SEAPUVXW54DNQAZD2EM98B486
+
+/*
+"latitude": 10.1242,
+"longitude": -68.0709,
+
+*/

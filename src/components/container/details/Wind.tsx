@@ -1,23 +1,36 @@
 import React from "react";
 import { LiaLocationArrowSolid } from "react-icons/lia";
+import { windDirectionCalc } from "../../../utils/windDirectionCalc";
 
-const Wind: React.FC = (): JSX.Element => {
+interface WindValues {
+    windSpeed: number;
+    degrees: number;
+    windUnit: boolean;
+}
+
+const Wind: React.FC<WindValues> = ({
+    windSpeed,
+    windUnit,
+    degrees,
+}): JSX.Element => {
+    const { degRotate, direction } = windDirectionCalc(degrees);
+
     return (
         <article className="container-daily-item">
             <div className="wind">
                 <h2>Wind status</h2>
                 <div className="container-unit-wind">
                     <p>
-                        7 <span>mph</span>
+                        {windSpeed} <span>mph</span>
                     </p>
                 </div>
                 <div className="container-wind-direction">
                     <div className="container-wind">
-                        <span className="wind-direction">
+                        <span className="wind-direction" style={{transform: `rotate(${degRotate}deg)`}}>
                             <LiaLocationArrowSolid />
                         </span>
                     </div>
-                        <p>WSW</p>
+                    <p>{direction}</p>
                 </div>
             </div>
         </article>

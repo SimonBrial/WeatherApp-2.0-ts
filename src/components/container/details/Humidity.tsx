@@ -1,13 +1,20 @@
 import React from "react";
 
-const Humidity: React.FC = (): JSX.Element => {
+interface HumidityValues {
+    porcentage: number;
+}
+
+const Humidity: React.FC<HumidityValues> = ({
+    porcentage = 84,
+}): JSX.Element => {
     return (
         <article className="container-daily-item">
             <div className="humidity">
                 <h2>Humidity</h2>
                 <div className="container-unit-humidity">
                     <p>
-                        84<span>%</span>
+                        {porcentage}
+                        <span>%</span>
                     </p>
                 </div>
                 <div className="container-bar">
@@ -18,7 +25,10 @@ const Humidity: React.FC = (): JSX.Element => {
                     </div>
                     <div className="bar">
                         <div className="front-bar"></div>
-                        <div className="back-bar"></div>
+                        <div
+                            className="back-bar"
+                            style={{ width: `${porcentage}%` }}
+                        ></div>
                     </div>
                     <p>%</p>
                 </div>

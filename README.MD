@@ -17,8 +17,13 @@ Challenge: Create a weather app using an API. Use Front-end libraries like React
 
 Icon: https://react-icons.github.io/react-icons
 
-API: https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/tocuyito?unitGroup=metric&key=SEAPUVXW54DNQAZD2EM98B486&contentType=json
+API: {
+    - https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/tocuyito?unitGroup=metric&key=SEAPUVXW54DNQAZD2EM98B486&contentType=json
 
+    (SOLO PARA OBTENER EL NOMBRE DE LA POSICION INICIAL, SEGUN DONDE PERTENEZCA LA PERSONA)
+
+    - `https://api.openweathermap.org/data/2.5/weather?lat={latitude}&lon={longitude}&appid={API_KEY_SECONDARY}`
+}
 
 API Docs: 
     - https://www.visualcrossing.com/resources/documentation/weather-api/unit-groups-and-measurement-units/
@@ -42,7 +47,7 @@ Tips: For Front-end developer, you can use https://cors-anywhere.herokuapp.com/ 
 1201px y más —  Pantallas extra-grandes, TV
 
 ALGORITMO O ETAPAS DE DESARROLLO
-1. Determinar posicion actual
+1. ✅ Determinar posicion actual
     - Determinar la posicion actual del usuario mediante el Hook que se creo.
     - Pasar esa informacion mediante el contexto de la app.
 2. Diseño logico de la UI
@@ -90,3 +95,13 @@ ALGORITMO O ETAPAS DE DESARROLLO
     - Definir la cantidad de cards que debera mostrar el area.
     - Coordinar la imagen del clima que se debe mostrar segun el clima
 5. Busqueda del clima segun la ciudad que se desee
+
+
+ALGORITMO
+    - Tengo que conseguir la posicion actula del usuario en latitud y longitud
+    - Tengo que realizar una peticion a la api de openWeather para solo extraer el nombre y el codigo del sitio en el que se encuentre el usuario.
+    - Tengo que realizar una peticion a la otra api para extraer toda la informacion corresponiente a las secccion
+
+1. Tengo una funcion para extrar las coordenadas (HOOK).
+2. Tengo una funcion que extra la informacion por coordenadas.
+3. tengo una funcion que realiza la peticion mediante ciudades y codigo

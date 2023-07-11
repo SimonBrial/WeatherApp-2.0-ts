@@ -1,13 +1,23 @@
 import React from "react";
+import { visibilityConvertion } from "../../../utils/convertions";
 
-const Visibility: React.FC = (): JSX.Element => {
+interface VisibilityValues {
+    distance: number;
+    distanceUnit?: boolean;
+}
+
+const Visibility: React.FC<VisibilityValues> = ({
+    distance,
+    distanceUnit,
+}): JSX.Element => {
     return (
         <article className="container-daily-item">
             <div className="visibility">
                 <h2>Visibility</h2>
                 <div className="container-unit-visibility">
                     <p>
-                        6,4 <span>miles</span>
+                        {visibilityConvertion(distance)}{" "}
+                        <span>{distanceUnit ? "meters" : "miles"}</span>
                     </p>
                 </div>
             </div>

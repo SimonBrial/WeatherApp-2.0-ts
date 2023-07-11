@@ -1,21 +1,26 @@
 import {
-    GET_CURRENT_LOCATION,
-    FETCH_DATA,
+    CURRENT_DATA,
     FAHRENHEIT,
+    FORECAST,
     CELCIUS,
 } from "../actions";
+import {Action} from "../../types/types"
 
-export default (state: any, action: any) => {
+export default (state: any, action: Action) => {
     const { payload, type } = action;
 
     switch (type) {
-        case GET_CURRENT_LOCATION:
+        case CURRENT_DATA:
+            //console.log(payload);
             return {
                 ...state,
+                currentWeather: payload,
             };
-        case FETCH_DATA:
+        case FORECAST:
+            //console.log(payload);
             return {
                 ...state,
+                forecast: payload,
             };
         case FAHRENHEIT:
             return {
