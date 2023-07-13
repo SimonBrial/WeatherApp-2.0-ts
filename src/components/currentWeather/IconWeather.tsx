@@ -1,14 +1,14 @@
 import React from "react";
 import {
-    WiStormShowers,
-    WiDaySunny,
-    WiShowers,
-    WiCloudy,
-    WiCloud,
-    WiRain,
-    WiHail,
-    WiSnow,
-} from "react-icons/wi";
+    Thunderstorm,
+    HeavyCloud,
+    LightCloud,
+    LightRain,
+    HeavyRain,
+    Clear,
+    Hail,
+    Snow,
+} from "../../icons/index";
 
 interface IconWeatherId {
     iconId: React.ReactNode;
@@ -19,25 +19,37 @@ type iconWeather = {
 };
 
 const IconWeather: React.FC<IconWeatherId> = ({ iconId }): JSX.Element => {
+
+    /**
+     * 01d.png 	clear sky --------> Clear.png 
+     * 02d.png 	few clouds -------> LightCloud.png 
+     * 03d.png 	scattered clouds -> HeavyCloud.png 
+     * 04d.png 	broken clouds ----> HeavyCloud.png 
+     * 09d.png 	shower rain ------> HeavyRain.png 
+     * 10d.png 	rain -------------> LightRain.png 
+     * 11d.png 	thunderstorm -----> Thunderstorm.png 
+     * 13d.png 	snow -------------> Snow.png 
+     * 50d.png  mist -------------> Hail.png 
+     */
     const weatherIcon = [
-        { code: "01d", icon: <WiDaySunny /> },
-        { code: "01n", icon: <WiDaySunny /> },
-        { code: "02d", icon: <WiCloud /> },
-        { code: "02n", icon: <WiCloud /> },
-        { code: "03d", icon: <WiCloudy /> },
-        { code: "03n", icon: <WiCloudy /> },
-        { code: "04d", icon: <WiCloudy /> },
-        { code: "04n", icon: <WiCloudy /> },
-        { code: "09d", icon: <WiRain /> },
-        { code: "09n", icon: <WiRain /> },
-        { code: "10d", icon: <WiShowers /> },
-        { code: "10n", icon: <WiShowers /> },
-        { code: "11d", icon: <WiStormShowers /> },
-        { code: "11n", icon: <WiStormShowers /> },
-        { code: "13d", icon: <WiSnow /> },
-        { code: "13n", icon: <WiSnow /> },
-        { code: "50d", icon: <WiHail /> },
-        { code: "50n", icon: <WiHail /> },
+        { code: "01d", icon: <Clear /> },
+        { code: "01n", icon: <Clear /> },
+        { code: "02d", icon: <LightCloud /> },
+        { code: "02n", icon: <LightCloud /> },
+        { code: "03d", icon: <HeavyCloud /> },
+        { code: "03n", icon: <HeavyCloud /> },
+        { code: "04d", icon: <HeavyCloud /> },
+        { code: "04n", icon: <HeavyCloud /> },
+        { code: "09d", icon: <HeavyRain /> },
+        { code: "09n", icon: <HeavyRain /> },
+        { code: "10d", icon: <LightRain /> },
+        { code: "10n", icon: <LightRain /> },
+        { code: "11d", icon: <Thunderstorm /> },
+        { code: "11n", icon: <Thunderstorm /> },
+        { code: "13d", icon: <Snow /> },
+        { code: "13n", icon: <Snow /> },
+        { code: "50d", icon: <Hail /> },
+        { code: "50n", icon: <Hail /> },
     ];
 
     const iconFound: iconWeather[] = weatherIcon.filter(

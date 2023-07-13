@@ -16,11 +16,11 @@ const Card: React.FC<CardValues> = ({tempMax, tempMin}): JSX.Element => {
             <div className="card-temperature">
                 <div className="card-temperature-index">
                     <p>MAX</p>
-                    <Temp tempSize="1.2rem" unitSize="1rem" tempValue={tempMax} tempUnit={true} />
+                    <Temp tempSize="1.1" unitSize="1rem" tempValue={tempMax} tempUnit={true} />
                 </div>
                 <div className="card-temperature-index">
                     <p>MIN</p>
-                    <Temp tempSize="1.2rem" unitSize="1rem" tempValue={tempMin} tempUnit={true} />
+                    <Temp tempSize="1.1" unitSize="1rem" tempValue={tempMin} tempUnit={true} />
                 </div>
             </div>
         </article>

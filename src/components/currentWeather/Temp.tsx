@@ -11,12 +11,18 @@ const Temp: React.FC<StyleTemp> = ({
     tempValue,
 }): JSX.Element => {
     //console.log(tempValue, tempUnit);
+
     return (
         <div className="container-temp">
-            <p style={{ fontSize: `${tempSize}`, color: `${tempColor}` }}>
+            <p
+                style={{
+                    fontSize: `${tempSize}rem`,
+                    color: `${tempColor}`,
+                }}
+            >
                 {tempValue}
             </p>
-            <span style={{ fontSize: `${unitSize}`, color: `${tempColor}` }}>
+            <span style={{ fontSize: `${unitSize}rem`, color: `${tempColor}` }}>
                 {tempUnit ? (
                     <TbTemperatureCelsius />
                 ) : (
