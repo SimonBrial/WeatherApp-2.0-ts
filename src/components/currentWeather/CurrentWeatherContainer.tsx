@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BtnCurrentLocation, BtnSearch } from "../buttons";
 import { Details, IconWeather, Temp, Weather } from "./index";
 import useDataContext from "../../hooks/useDataContext";
+import { ContextProps } from "../../interface/interface";
+import { AppContext } from "../../context";
+import { convertionToFarenheit } from "../../utils/convertions";
 
 const CurrentWeatherContainer: React.FC = (): JSX.Element => {
+    const globalContext = useContext(AppContext);
+    const { appUnits } = globalContext as ContextProps;
     const { current, statusData } = useDataContext();
-
+    const tempValue = convertionToFarenheit(current.main.temp);
+    const tempFormated =current.main.temp.toFixed(1);
     return (
         <aside className="container-current-weather">
             <div className="aside-buttons">
@@ -15,10 +21,10 @@ const CurrentWeatherContainer: React.FC = (): JSX.Element => {
             <div className="weather-info">
                 <IconWeather iconId={current.weather[0].icon} />
                 <Temp
-                    tempSize="6.5rem"
-                    unitSize="3.5rem"
-                    tempUnit={true}
-                    tempValue={statusData ? current.main.temp : 15}
+                    tempSize="6.5"
+                    unitSize="3.5"
+                    tempUnit={appUnits}
+                    tempValue={appUnits ? parseFloat(tempValue) : parseFloat(tempFormated)}
                 />
                 <Weather
                     weatherValue={

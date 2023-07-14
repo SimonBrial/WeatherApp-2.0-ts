@@ -9,7 +9,7 @@ const LightCloud: React.FC = (): JSX.Element => {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
         >
-            <g clip-path="url(#clip0_1_53)">
+            <g clipPath="url(#clip0_1_53)">
                 <circle cx="106" cy="86" r="69" fill="#FFEC66" />
                 <path
                     d="M179.5 86.5C179.5 127.952 146.339 161.5 105.5 161.5C64.6614 161.5 31.5 127.952 31.5 86.5C31.5 45.0479 64.6614 11.5 105.5 11.5C146.339 11.5 179.5 45.0479 179.5 86.5Z"

@@ -5,6 +5,8 @@ import {
     FETCH_DATA,
     CURRENT_DATA,
     FORECAST,
+    FAHRENHEIT,
+    CELCIUS,
 } from "../actions";
 import { initialState } from "../initialState";
 import {
@@ -12,12 +14,7 @@ import {
     CurrentLocationData,
     Response,
 } from "../../interface/interface";
-import { DataPosition } from "../../interface/dataPosition.interface";
-import { currentLocation } from "../../utils/currentLocation";
-import { locationByLatAndLon } from "../../utils/locationByLatAndLon";
 import errorHandle from "../../utils/errorHandle";
-import { CurrentWeather } from "../../interface/DataWeather.interface";
-import useLatAndLonLocation from "../../hooks/useLatAndLonLocation";
 import {
     currentWeatherByLatLng,
     forecastWeatherByLatLng,
@@ -112,14 +109,31 @@ const AppState = (props: any) => {
         });
     };
 
+    const fahrenheitConvertion = () => {
+        return dispatch({
+            type: FAHRENHEIT,
+            payload: true
+        })
+    };
+
+    const celciusConvertion = () => {
+        return dispatch({
+            type: CELCIUS,
+            payload: false
+        })
+    };
+
     const contextValue: ContextProps = {
         currentWeather: state.currentWeather,
         fahrenheit: state.fahrenheit,
         hightlight: state.hightlight,
         forecast: state.forecast,
+        appUnits: state.appUnits,
         celcius: state.celcius,
         getDataByLatLng,
         getDataByCityName,
+        fahrenheitConvertion,
+        celciusConvertion
     };
 
     return (

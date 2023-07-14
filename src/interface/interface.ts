@@ -28,6 +28,7 @@ interface dateCurrentWeather {
 
 interface BtnTemperature {
     TempUnit: ReactNode;
+    convertionUnit: () => void;
 }
 
 interface GeolocationCoordinates {
@@ -69,6 +70,7 @@ interface ContextProps {
     hightlight?: CurrentConditions;
     fahrenheit?: boolean;
     celcius?: boolean;
+    appUnits: boolean;
     forecast?: ForecastData;
 
     getDataByLatLng : (
@@ -76,6 +78,8 @@ interface ContextProps {
         longitude: number,
     ) => Promise<void>;
     getDataByCityName?: (city: string) => void;
+    fahrenheitConvertion?: () => void;
+    celciusConvertion?: () => void;
 }
 
 interface Prueba {

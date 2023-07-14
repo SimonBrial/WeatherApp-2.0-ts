@@ -23,12 +23,16 @@ export default (state: any, action: Action) => {
                 forecast: payload,
             };
         case FAHRENHEIT:
+            console.log(payload)
             return {
                 ...state,
+                appUnits: payload
             };
         case CELCIUS:
+            console.log(payload)
             return {
                 ...state,
+                appUnits: payload
             };
 
         default:

@@ -17,7 +17,7 @@ const Visibility: React.FC<VisibilityValues> = ({
                 <div className="container-unit-visibility">
                     <p>
                         {visibilityConvertion(distance)}{" "}
-                        <span>{distanceUnit ? "meters" : "miles"}</span>
+                        <span>{distanceUnit ? "miles" : "meters"}</span>
                     </p>
                 </div>
             </div>

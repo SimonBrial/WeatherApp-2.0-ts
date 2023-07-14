@@ -9,7 +9,7 @@ const Shower: React.FC = (): JSX.Element => {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
         >
-            <g clip-path="url(#clip0_1_79)">
+            <g clipPath="url(#clip0_1_79)">
                 <circle cx="58" cy="58" r="44" fill="#FFEC66" />
                 <circle
                     cx="57.5"

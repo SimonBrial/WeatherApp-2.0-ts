@@ -10,8 +10,7 @@ const Temp: React.FC<StyleTemp> = ({
     tempUnit,
     tempValue,
 }): JSX.Element => {
-    //console.log(tempValue, tempUnit);
-
+    //console.log(tempUnit);
     return (
         <div className="container-temp">
             <p
@@ -24,9 +23,9 @@ const Temp: React.FC<StyleTemp> = ({
             </p>
             <span style={{ fontSize: `${unitSize}rem`, color: `${tempColor}` }}>
                 {tempUnit ? (
-                    <TbTemperatureCelsius />
-                ) : (
                     <TbTemperatureFahrenheit />
+                ) : (
+                    <TbTemperatureCelsius />
                 )}
             </span>
         </div>

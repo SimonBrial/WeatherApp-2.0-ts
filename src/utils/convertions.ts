@@ -1,13 +1,13 @@
 type tempCelcius = number;
 function convertionToCelcius(value: tempCelcius) {
-    const celcius: number = value - 273.15;
-    return celcius.toFixed(2);
+    const celcius = (value - 32) * (5 / 9);
+    return celcius.toFixed(1);
 }
 
 type tempFahrenheit = number;
 function convertionToFarenheit(value: tempFahrenheit) {
-    const farenheit: number = (value - 273.15) * (9 / 5) + 32;
-    return farenheit.toFixed(2);
+    const farenheit = (value * (9 / 5)) + 32;
+    return farenheit.toFixed(1);
 }
 
 type pressurehPa = number;

@@ -26,9 +26,12 @@ interface DataContextHook {
 
 const useDataContext = (): DataContextHook => {
     const globalContext = useContext(AppContext);
-    const { currentWeather, forecast } = globalContext as ContextProps;
+    const { currentWeather, forecast } =
+        globalContext as ContextProps;
     /* console.log(currentWeather);
     console.log(forecast); */
+
+    //console.log(appUnits);
 
     const [current, setCurrent] = useState<CurrentWeatherData>({
         weather: [
@@ -54,20 +57,20 @@ const useDataContext = (): DataContextHook => {
         name: "",
         visibility: 10000,
         wind: { speed: 4.72, deg: 195, gust: 7.45 },
-        forecastdata: [],
+        forecastdata: []
     });
     const [statusData, setStatusData] = useState<boolean>(false);
 
     useEffect(() => {
         if (
             currentWeather !== undefined &&
-            forecast !== undefined &&
-            currentWeather.statusPermission == true
+            currentWeather.statusPermission == true &&
+            forecast !== undefined
         ) {
-            setStatusData(true);
+            setStatusData(currentWeather.statusPermission);
             const { weather, main, sys, name, visibility, wind } =
                 currentWeather.data;
-            const {data} = forecast;
+            const { data } = forecast;
             setCurrent({
                 weather: weather,
                 main: main,

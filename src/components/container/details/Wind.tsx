@@ -15,13 +15,15 @@ const Wind: React.FC<WindValues> = ({
 }): JSX.Element => {
     const { degRotate, direction } = windDirectionCalc(degrees);
 
+    // TODO: hay que recordar que se debe realizar la conversin de los valores segun sea el cambio de unidad.
+
     return (
         <article className="container-daily-item">
             <div className="wind">
                 <h2>Wind status</h2>
                 <div className="container-unit-wind">
                     <p>
-                        {windSpeed} <span>mph</span>
+                        {windSpeed} <span>{windUnit ? "mph" : "m/s"}</span>
                     </p>
                 </div>
                 <div className="container-wind-direction">
