@@ -32,10 +32,16 @@ function convertionUnits(tempValue: number, tempChoose: boolean) {
     }
 }
 
+function getCityAndCode (cityWithCode: string){
+    const cityAndcodeSeparate = cityWithCode.split(',');
+    return cityAndcodeSeparate;
+}
+
 export {
     convertionToFarenheit,
     visibilityConvertion,
     convertionToCelcius,
     convertionUnits,
+    getCityAndCode,
     pressure,
 };

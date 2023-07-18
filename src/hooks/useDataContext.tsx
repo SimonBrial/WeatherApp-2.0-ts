@@ -1,37 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../context";
-import { ContextProps } from "../interface/interface";
-import {
-    Main,
-    Sys,
-    Weather as WeatherInterface,
-    Wind,
-} from "../interface/dataPosition.interface";
-import { Day } from "../interface/DataWeather.interface";
-
-interface CurrentWeatherData {
-    weather: WeatherInterface[];
-    main: Main;
-    sys: Sys;
-    name: string;
-    visibility: number;
-    wind: Wind;
-    forecastdata: Day[];
-}
-
-interface DataContextHook {
-    current: CurrentWeatherData;
-    statusData: boolean;
-}
+import { ContextProps, CurrentWeatherData, DataContextHook } from "../interface/interface";
 
 const useDataContext = (): DataContextHook => {
     const globalContext = useContext(AppContext);
-    const { currentWeather, forecast } =
-        globalContext as ContextProps;
-    /* console.log(currentWeather);
-    console.log(forecast); */
-
-    //console.log(appUnits);
+    const { currentWeather, forecast } = globalContext as ContextProps;
 
     const [current, setCurrent] = useState<CurrentWeatherData>({
         weather: [
@@ -57,7 +30,7 @@ const useDataContext = (): DataContextHook => {
         name: "",
         visibility: 10000,
         wind: { speed: 4.72, deg: 195, gust: 7.45 },
-        forecastdata: []
+        forecastdata: [],
     });
     const [statusData, setStatusData] = useState<boolean>(false);
 
@@ -78,9 +51,10 @@ const useDataContext = (): DataContextHook => {
                 name: name,
                 visibility: visibility,
                 wind: wind,
-                forecastdata: data.slice(0, 5)
+                forecastdata: data.slice(1, 6),
             });
         }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentWeather]);
 
     return { current, statusData };

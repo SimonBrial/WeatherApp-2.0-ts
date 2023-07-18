@@ -15,6 +15,7 @@ async function currentWeatherByLatLng(
             throw new Error("Error HTTP: " + response.status);
         }
         const data = await response.json();
+        //console.log(data);
         return data;
     } catch (err) {
         console.log(err);
@@ -32,6 +33,7 @@ async function forecastWeatherByLatLng(
             throw new Error("Error HTTP: " + response.status);
         }
         const data = await response.json();
+        //console.log(data);
         return data;
     } catch (err) {
         console.log(err);
@@ -39,7 +41,23 @@ async function forecastWeatherByLatLng(
     }
 }
 
-async function currentWeatherByTag(city: string) {
+async function currentWeatherByTag(city: string, code: string): Promise<DataPosition> {
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${code}&units=metric&appid=${apiKeyWeather}`;
+    try {
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error("Error HTTP: " + response.status);
+        }
+        const data = await response.json();
+        //console.log(data);
+        return data;
+    } catch (err) {
+        console.log(err);
+        throw err;
+    }
+}
+
+async function forecastWeatherByTag(city: string): Promise<CurrentWeather> {
     const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?key=${apiKeyForecast}`;
     try {
         const response = await fetch(url);
@@ -47,6 +65,7 @@ async function currentWeatherByTag(city: string) {
             throw new Error("Error HTTP: " + response.status);
         }
         const data = await response.json();
+        //console.log(data);
         return data;
     } catch (err) {
         console.log(err);
@@ -54,13 +73,9 @@ async function currentWeatherByTag(city: string) {
     }
 }
 
-/* async function forecastWeatherByTag(city:string) {
-    const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?key=${apiKeyForecast}`;
-} */
-
 export {
     forecastWeatherByLatLng,
     currentWeatherByLatLng,
-    //forecastWeatherByTag,
+    forecastWeatherByTag,
     currentWeatherByTag,
 };

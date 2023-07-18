@@ -1,8 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
-import useCurrentLocation from "./useCurrentLocation";
+import { useCurrentLocation } from ".";
 import { locationByLatAndLon } from "../utils/locationByLatAndLon";
 import { DataPosition } from "../interface/dataPosition.interface";
+
 const useLatAndLonLocation = (): DataPosition => {
     const initialStatePosition: DataPosition = {
         base: "stations",
@@ -41,7 +42,8 @@ const useLatAndLonLocation = (): DataPosition => {
         ],
         wind: { speed: 1.93, deg: 149, gust: 3.56 },
     };
-    const [fullData, setFullData] = useState<DataPosition>(initialStatePosition);
+    const [fullData, setFullData] =
+        useState<DataPosition>(initialStatePosition);
     const response = useCurrentLocation();
 
     if (!response) {

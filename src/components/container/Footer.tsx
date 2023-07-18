@@ -1,4 +1,5 @@
 import React from "react";
+import { DevIcon } from "../../icons";
 
 const Footer: React.FC = (): JSX.Element => {
     return (
@@ -6,7 +7,9 @@ const Footer: React.FC = (): JSX.Element => {
             <p>
                 Created by <span>Simon Briceño</span> - devChallenges.io
             </p>
-            <img src="img/devchallenges.png" />
+            <span>
+                <DevIcon />
+            </span>
         </footer>
     );
 };

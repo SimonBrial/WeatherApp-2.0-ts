@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Card, TempBtnContainer, DailyWeatherContainer } from "..";
-import useDataContext from "../../../hooks/useDataContext";
+import { useDataContext } from "../../../hooks";
 import { ContextProps } from "../../../interface/interface";
 import { AppContext } from "../../../context";
 

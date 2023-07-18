@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Air, Humidity, Visibility, Wind } from "..";
-import useDataContext from "../../../hooks/useDataContext";
+import { useDataContext } from "../../../hooks";
 import { ContextProps } from "../../../interface/interface";
 import { AppContext } from "../../../context";
 

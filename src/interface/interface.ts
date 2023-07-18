@@ -1,8 +1,12 @@
 import { ReactNode } from "react";
+import { CurrentConditions, Day } from "./DataWeather.interface";
 import {
-    CurrentConditions,
-} from "./DataWeather.interface";
-import { DataPosition } from "./dataPosition.interface";
+    DataPosition,
+    Main,
+    Sys,
+    Weather as WeatherInterface,
+    Wind,
+} from "./dataPosition.interface";
 import { CurrentWeatherResponse, ForecastData } from "./DataResponse.interface";
 
 interface InitialState {
@@ -67,17 +71,17 @@ interface ResponseData {
 
 interface ContextProps {
     currentWeather?: CurrentWeatherResponse;
+    currentWeather2?: CurrentWeatherResponse;
     hightlight?: CurrentConditions;
     fahrenheit?: boolean;
     celcius?: boolean;
     appUnits: boolean;
     forecast?: ForecastData;
+    forecast2?: ForecastData;
 
-    getDataByLatLng : (
-        latitude: number,
-        longitude: number,
-    ) => Promise<void>;
-    getDataByCityName?: (city: string) => void;
+    getDataByLatLng: (latitude: number, longitude: number) => Promise<void>;
+    getLocation: () => Promise<void>;
+    getDataByCityName: (city: string) => Promise<void>;
     fahrenheitConvertion?: () => void;
     celciusConvertion?: () => void;
 }
@@ -103,16 +107,39 @@ interface DataResponseWeather {
     statusPermission: boolean;
 }
 
+interface CurrentWeatherData {
+    weather: WeatherInterface[];
+    main: Main;
+    sys: Sys;
+    name: string;
+    visibility: number;
+    wind: Wind;
+    forecastdata: Day[];
+}
+
+interface DataContextHook {
+    current: CurrentWeatherData;
+    statusData: boolean;
+}
+
+interface BtnSearch {
+    show: boolean;
+    toShow: () => void;
+}
+
 export type {
     CurrentLocationData,
     DataResponseWeather,
+    CurrentWeatherData,
     GeolocationError,
+    DataContextHook,
     BtnTemperature,
     currentWeather,
     InitialState,
     ContextProps,
     ResponseData,
     StyleTemp,
+    BtnSearch,
     Response,
 };
 

@@ -7,9 +7,76 @@
     padding: 0.5rem;
     text-align: center;
     background-color: var(--bg-secondary);
+    position: relative;
 
     @include breakpoint(sm) {
         width: 100%;
+    }
+}
+
+@keyframes showAside {
+    0% {
+        transform: translateX(-32vw);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.container-search-active {
+    animation: 0.3s showAside ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+.bg-search-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 15;
+    width: 100vw;
+    height: 100%;
+    background-color: black;
+    opacity: 0.5;
+}
+
+.container-search {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 20;
+    padding: 2.5rem 1rem;
+    background-color: var(--bg-secondary);
+    width: 32vw;
+    height: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+
+    form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.2rem;
+
+        input {
+            padding: 0.5rem 0.8rem;
+        }
+
+        .btn-search {
+            color: white;
+            background-color: var(--btn-search);
+            padding: 0.55rem 0.8rem;
+            //margin-left: 0.2rem;
+            text-transform: uppercase;
+            cursor: pointer;
+        }
+    }
+
+    .closeIcon {
+        color: #fff;
+        margin-top: 0.1rem;
+        font-size: 2rem;
+        cursor: pointer;
     }
 }
 
