@@ -4,8 +4,8 @@ async function locationByLatAndLon(
     lat: number,
     lon: number,
 ): Promise<LocationData> {
-    const apiKeyWeather = import.meta.env.VITE_API_KEY_WEATHER;
-    const apiKeyForecast = import.meta.env.VITE_API_KEY_FORECAST;
+    const apiKeyWeather = "8360a837b90921597f2af06ebf76fd77";
+    const apiKeyForecast = "SEAPUVXW54DNQAZD2EM98B486";
 
     const urlWeather = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKeyWeather}`;
     const urlForecast = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${lat},${lon}?key=${apiKeyForecast}`;

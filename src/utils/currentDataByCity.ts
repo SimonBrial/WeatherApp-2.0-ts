@@ -1,5 +1,5 @@
 async function currentDataByCity(city: string) {
-    const apiKey = import.meta.env.VITE_API_KEY;
+    const apiKey = "SEAPUVXW54DNQAZD2EM98B486";
     const urlForest = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?unitGroup=metric&key=${apiKey}&contentType=json`;
 
     try {

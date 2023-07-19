@@ -1,8 +1,8 @@
 import { CurrentWeather } from "../interface/DataWeather.interface";
 import { DataPosition } from "../interface/dataPosition.interface";
 
-const apiKeyWeather = import.meta.env.VITE_API_KEY_WEATHER;
-const apiKeyForecast = import.meta.env.VITE_API_KEY_FORECAST;
+const apiKeyWeather = "8360a837b90921597f2af06ebf76fd77";
+const apiKeyForecast = "SEAPUVXW54DNQAZD2EM98B486";
 
 async function currentWeatherByLatLng(
     latitude: number,
@@ -41,7 +41,10 @@ async function forecastWeatherByLatLng(
     }
 }
 
-async function currentWeatherByTag(city: string, code: string): Promise<DataPosition> {
+async function currentWeatherByTag(
+    city: string,
+    code: string,
+): Promise<DataPosition> {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},${code}&units=metric&appid=${apiKeyWeather}`;
     try {
         const response = await fetch(url);
