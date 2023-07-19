@@ -2,7 +2,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useContext } from "react";
 import Layout from "./components/Layout";
-import { CurrentWeatherContainer } from "./components/currentWeather";
 import "./index.scss";
 import { AppContext } from "./context/index";
 import { ContextProps } from "./interface/interface";

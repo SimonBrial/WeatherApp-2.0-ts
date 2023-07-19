@@ -1,5 +1,5 @@
 import React from "react";
-import { Footer, ForecastContainer } from ".";
+import { ForecastContainer } from ".";
 
 const Container: React.FC = (): JSX.Element => {
     return (

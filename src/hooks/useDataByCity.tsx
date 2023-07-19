@@ -1,11 +1,10 @@
 import { useState, useEffect, useContext } from "react";
 import { ContextProps, CurrentWeatherData } from "../interface/interface";
 import { AppContext } from "../context";
-
 const useDataByCity = (cityAndCode: string) => {
     const globalContext = useContext(AppContext);
-    const { getDataByCityName, currentWeather2, forecast2 } = globalContext as ContextProps;
-    const [responseData, setResponseData] = useState<CurrentWeatherData>({
+    const { getDataByCityName} = globalContext as ContextProps;
+    const [responseData] = useState<CurrentWeatherData>({
         weather: [
             { id: 0, main: "simon", description: "few simon", icon: "02n" },
         ],
@@ -31,8 +30,6 @@ const useDataByCity = (cityAndCode: string) => {
         wind: { speed: 4.72, deg: 195, gust: 7.45 },
         forecastdata: [],
     });
-    const [statusData, setStatusData] = useState<boolean>(false);
-    console.log(cityAndCode)
     useEffect(() => {
         if(cityAndCode) {
             getDataByCityName(cityAndCode)
@@ -46,8 +43,6 @@ const useDataByCity = (cityAndCode: string) => {
             console.log("Inserte la region en la que desea saber el clima")
         }
     }, [cityAndCode]);
-
     return responseData;
 };
-
 export default useDataByCity;

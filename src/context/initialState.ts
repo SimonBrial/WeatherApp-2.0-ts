@@ -1,14 +1,15 @@
 import { InitialState } from "../interface/interface";
-import fakeData from "../fakeData/currentWeatherFake.json";
+import forecastData from "../fakeData/forecastFakeData.json";
+import currentData from "../fakeData/currentFakeData.json";
 export const initialState: InitialState = {
     currentWeather: {
-        data: fakeData.currentConditions,
+        data: currentData,
         errorMsg: "state",
         statusPermission: false,
     },
-    hightlight: fakeData.currentConditions,
+    hightlight: forecastData.currentConditions,
     forecast: {
-        data: fakeData.days,
+        data: forecastData.days,
         errorMsg: "state",
         statusPermission: false,
     },

@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import { useCurrentLocation } from ".";
 import { locationByLatAndLon } from "../utils/locationByLatAndLon";
 import { DataPosition } from "../interface/dataPosition.interface";
-
-const useLatAndLonLocation = (): DataPosition => {
+import { LocationData } from "../interface/DataWeather.interface";
+const useLatAndLonLocation = (): DataPosition | LocationData => {
     const initialStatePosition: DataPosition = {
         base: "stations",
         clouds: { all: 0 },
@@ -42,16 +42,14 @@ const useLatAndLonLocation = (): DataPosition => {
         ],
         wind: { speed: 1.93, deg: 149, gust: 3.56 },
     };
-    const [fullData, setFullData] =
-        useState<DataPosition>(initialStatePosition);
+    const [fullData, setFullData] = useState<DataPosition | LocationData>(
+        initialStatePosition,
+    );
     const response = useCurrentLocation();
-
     if (!response) {
         console.log("No es posible determinar la posicion actual del usuario");
     }
-
     const { data, statusPermission } = response;
-
     useEffect(() => {
         if (data) {
             const { latitude, longitude } = data;
@@ -60,7 +58,6 @@ const useLatAndLonLocation = (): DataPosition => {
                 .catch((err) => console.log(err));
         }
     }, [statusPermission]);
-
     return fullData;
 };
 export default useLatAndLonLocation;
