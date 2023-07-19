@@ -8,12 +8,10 @@
     text-align: center;
     background-color: var(--bg-secondary);
     position: relative;
-
     @include breakpoint(sm) {
         width: 100%;
     }
 }
-
 @keyframes showAside {
     0% {
         transform: translateX(-32vw);
@@ -28,19 +26,8 @@
     animation-fill-mode: forwards;
 }
 
-.bg-search-container{
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 15;
-    width: 100vw;
-    height: 100%;
-    background-color: black;
-    opacity: 0.5;
-}
-
 .container-search {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 20;
@@ -49,35 +36,78 @@
     width: 32vw;
     height: 100%;
     display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2rem;
 
-    form {
+    @include breakpoint(sm) {
+        width: 100%;
+    }
+
+    .form-container {
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 0.2rem;
+        gap: 1rem;
 
-        input {
-            padding: 0.5rem 0.8rem;
-        }
+        form {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.2rem;
+            position: relative;
 
-        .btn-search {
-            color: white;
-            background-color: var(--btn-search);
-            padding: 0.55rem 0.8rem;
-            //margin-left: 0.2rem;
-            text-transform: uppercase;
-            cursor: pointer;
+            input {
+                padding: 0.5rem 0.8rem 0.5rem 2.2rem;
+            }
+
+            .btn-search {
+                color: white;
+                background-color: var(--btn-search);
+                padding: 0.55rem 0.8rem;
+                text-transform: uppercase;
+                cursor: pointer;
+                &:hover {
+                    background-color: var(--btn-search-hover);
+                    transition: all 0.3s ease-in-out;
+                }
+            }
         }
+    }
+
+    .searchIcon {
+        position: absolute;
+        color: black;
+        font-size: var(--font-md);
+        left: 0.5rem;
     }
 
     .closeIcon {
         color: #fff;
-        margin-top: 0.1rem;
+        margin-top: 0.5rem;
         font-size: 2rem;
         cursor: pointer;
+        @include breakpoint(sm) {
+            margin-top: -0.3rem;
+            font-size: 3rem;
+        }
+        &:hover {
+            transform: scale(1.1);
+            transition: all 0.3s ease-in-out;
+        }
     }
+}
+
+.bg-search-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 15;
+    width: 100vw;
+    height: 100%;
+    background-color: black;
+    opacity: 0.5;
 }
 
 .aside-buttons {
